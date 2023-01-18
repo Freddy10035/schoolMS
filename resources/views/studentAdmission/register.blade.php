@@ -8,7 +8,7 @@
                 <p class="mb-4">Create a Student Account</p>
             </header>
 
-            <form method="POST" action="/studentAdmission/register">
+            <form method="POST" action="/student">
                 @csrf
                 <div class="mb-6">
                     <label for="name" class="inline-block text-lg mb-2">

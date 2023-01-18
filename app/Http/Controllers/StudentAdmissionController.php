@@ -7,15 +7,6 @@ use Illuminate\Http\Request;
 
 class StudentAdmissionController extends Controller
 {
- //show all students
-    public function index()
-    {
-        return view('studentAdmission.index', [
-            'studentAdmission' => Student::latest()->paginate(4)
-        ]);
-    }
-
-
 
     public function create()
     {
@@ -28,7 +19,7 @@ class StudentAdmissionController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|unique:students|email',
-            'password'=> 'required'
+            'password'=> 'required|confirmed|min:6'
         ]);
 
         //Hash Password

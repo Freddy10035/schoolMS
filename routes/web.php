@@ -23,11 +23,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/studentAdmission', [StudentAdmissionController::class, 'index']);
-Route::get('/studentAdmission/register', [StudentAdmissionController::class, 'create']);
-Route::post('/studentAdmission/store', [StudentAdmissionController::class,'store']);
-Route::post('/studentAdmission/authenticate', [StudentAdmissionController::class,'authenticate']);
-Route::get('/studentAdmission/login', [StudentAdmissionController::class,'login']);
+Route::post('/student', [StudentAdmissionController::class, 'store']);
+Route::get('/student/register', [StudentAdmissionController::class, 'create'])->middleware('guest');
+Route::post('/student/authenticate', [StudentAdmissionController::class,'authenticate']);
+Route::get('/student/login', [StudentAdmissionController::class,'login']);
+Route::get('/logout', [StudentAdmissionController::class,'logout']);
 
 
 Route::get('/staff', [StaffController::class, 'index']);
