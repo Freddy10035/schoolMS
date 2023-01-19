@@ -35,6 +35,8 @@ Route::delete('/student/{id}', [StudentAdmissionController::class, 'destroy'])->
 
 Route::get('/staff', [StaffController::class, 'index']);
 Route::get('/staff/create', [StaffController::class, 'create']);
+Route::get('/staff/login', [StaffController::class, 'login']);
+Route::get('/staff/authenticate', [StaffController::class, 'authenticate']);
 Route::post('/staff', [StaffController::class, 'store']);
 Route::get('/staff/{id}/edit', [StaffController::class, 'edit']);
 Route::put('/staff/{id}', [StaffController::class, 'update']);

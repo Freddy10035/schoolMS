@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         $staff = Staff::factory()->create([
             'name'=> 'Fredrick Ochieng',
             'department'=>'Information Technology',
-            'email' => 'fredrick_ochieng@outlook.com',
+            'staffID' => 'FOIT2020',
             'password' =>'123456789'
           ]);
     
