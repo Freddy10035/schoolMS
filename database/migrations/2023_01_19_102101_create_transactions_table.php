@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id')->constrained()->onDelete('cascade');
-            $table->integer('amount');
+            $table->unsignedBigInteger('student_id');
+            $table->date('date');
+            $table->float('amount');
             $table->timestamps();
         });
     }

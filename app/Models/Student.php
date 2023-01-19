@@ -41,4 +41,51 @@ class Student extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // //This student is managed by one Staff
+    // public function staff()
+    // {
+    //     return $this->belongsTo(Staff::class, 'staff_id');
+    // }
+
+
+    // //This contact belongs to one student
+    // public function contact()
+    // {
+    //     return $this->hasOne(Contact::class, 'student_id');
+    // }
+
+
+    // //This student has done a lot of transactions
+    // public function transaction()
+    // {
+    //     return $this->hasMany(Transaction::class, 'student_id');
+    // }
+
+    // //This contact belong to one student
+    // public function fees()
+    // {
+    //     return $this->hasMany(Fees::class, 'student_id');
+    // }
+
+    public function staff()
+    {
+        return $this->belongsTo(Staff::class);
+    }
+
+    public function contact()
+    {
+        return $this->hasOne(Contact::class);
+    }
+
+    public function fees()
+    {
+        return $this->hasMany(Fee::class);
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }
+

@@ -19,6 +19,7 @@ class FeeCollectionController extends Controller
     {
         $validatedData = $request->validate([
             'student_id' => 'required',
+            'date'=> 'required',
             'amount' => 'required|numeric',
         ]);
 

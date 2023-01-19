@@ -17,4 +17,10 @@ class Staff extends Authenticatable
         'password',
     ];
 
+
+    //Relationship to student
+    public function student(){
+        return $this->hasMany(Student::class, 'staff_students');
+
+    }
 }

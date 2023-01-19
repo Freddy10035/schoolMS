@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Staff;
+use App\Models\Student;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,5 +23,19 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        $staff = Staff::factory()->create([
+            'name'=> 'Fredrick Ochieng',
+            'department'=>'Information Technology',
+            'email' => 'fredrick_ochieng@outlook.com',
+            'password' =>'123456789'
+          ]);
+    
+             Student::factory(6)->create([
+                'staff_id' => $staff->id
+             ]);    
+
+
+
     }
 }

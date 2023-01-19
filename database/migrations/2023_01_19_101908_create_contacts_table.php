@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('student_id');
             $table->string('name');
             $table->string('email');
-            $table->sting('message'); 
+            $table->string('message'); 
             $table->timestamps();
         });
     }

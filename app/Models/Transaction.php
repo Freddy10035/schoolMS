@@ -10,6 +10,12 @@ class Transaction extends Model
     use HasFactory;
 
     protected $fillable = [
-        'amount',
+        'number of transactions',
     ];
+    
+
+    // //These transactions belong to one student
+    // public function student(){
+    //     return $this->belongsTo(Student::class, 'student_id');
+    // }
 }

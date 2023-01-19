@@ -14,4 +14,12 @@ class Fee extends Model
         'grade',
         'amount',
     ];
+
+
+    // //These Fees belong to one student
+    // public function student(){
+    //     return $this->belongsTo(Student::class, 'student_id');
+    // }
 }
+
+

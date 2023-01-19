@@ -15,7 +15,7 @@ class ReportController extends Controller
         $total_amount = Transaction::sum('amount');
         $paid_students = Transaction::groupBy('student_id')->count();
 
-        return view('/reports', [
+        return view('reports.index', [
             'transactions' => $transactions, 
             'total_amount' => $total_amount, 
             'paid_students' => $paid_students
