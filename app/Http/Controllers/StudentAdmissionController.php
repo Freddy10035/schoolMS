@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
+
 class StudentAdmissionController extends Controller
 {
 
@@ -12,31 +13,33 @@ class StudentAdmissionController extends Controller
     {
         return view('studentAdmission.register');
     }
- 
+
     //create new student
     public function store(Request $request)
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|unique:students|email',
-            'password'=> 'required|confirmed|min:6'
+            'password' => 'required|confirmed|min:6'
         ]);
-
-        //Hash Password
-        $validatedData['password'] = bcrypt($validatedData['password']);
 
         //Create User 
         $student = Student::create($validatedData);
 
+        //Hash Password
+        $validatedData['password'] = bcrypt($validatedData['password']);
+
+
         //Login
         auth()->login($student);
 
-        return redirect('/')->with('message','Student created and logged in');
+        return redirect('/')->with('message', 'Student created and logged in');
     }
 
 
     //Log out user
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
         auth()->logout();
 
         $request->session()->invalidate();
@@ -46,15 +49,17 @@ class StudentAdmissionController extends Controller
     }
 
     //show login form
-    public function login(){
+    public function login()
+    {
         return view('studentAdmission.login');
     }
 
     //authenticate user
-    public function authenticate(Request $request){
+    public function authenticate(Request $request)
+    {
         $formFields = $request->validate([
             'email' => ['required', 'email'],
-            'password' =>'required'
+            'password' => 'required'
         ]);
 
         if (auth()->attempt($formFields)) {
@@ -63,9 +68,6 @@ class StudentAdmissionController extends Controller
             return redirect('/')->with('message', 'You are now logged in');
         }
 
-        return back()->withErrors(['email'=>'Invalid Credentials'])->onlyInput('email');
-
+        return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
     }
-
-
 }
