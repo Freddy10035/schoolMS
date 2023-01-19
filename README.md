@@ -2,14 +2,13 @@
 
 This project is a School Management System (SMS) designed to help school administrators manage their school's data. It provides an easy-to-use interface for managing student information, staff information, and other school-related data. 
 
-The system is written in Java and uses a MySQL database for data storage. It also includes a web-based user interface for accessing the system from any web browser. 
+The system is written in PHP and uses a MySQL database for data storage. It also includes a web-based user interface for accessing the system from any web browser. 
 
 The system provides features such as: 
 * Student registration and enrollment 
 * Staff management 
 * Course management 
 * Gradebook management 
-* Attendance tracking 
 * Scheduling and calendar management 
 * Report generation 
 
