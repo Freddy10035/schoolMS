@@ -9,4 +9,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Staff extends Authenticatable
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'department',
+        'email',
+        'password',
+    ];
+
 }
