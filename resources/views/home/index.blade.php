@@ -10,6 +10,7 @@
             @include('partials._we')
             @include('partials._innovations')
             @include('partials._payments')
+            @include('partials._footer')
 
             <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
         </body>

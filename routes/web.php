@@ -26,8 +26,11 @@ Route::get('/', [HomeController::class, 'index']);
 Route::post('/student', [StudentAdmissionController::class, 'store']);
 Route::get('/student/register', [StudentAdmissionController::class, 'create'])->middleware('guest');
 Route::post('/student/authenticate', [StudentAdmissionController::class,'authenticate']);
-Route::get('/student/login', [StudentAdmissionController::class,'login']);
-Route::get('/logout', [StudentAdmissionController::class,'logout']);
+Route::get('/student/login', [StudentAdmissionController::class,'login'])->name('login')->middleware('guest');
+Route::get('/logout', [StudentAdmissionController::class,'logout'])->middleware('guest');
+Route::get('/student/{id}/edit', [StudentAdmissionController::class, 'edit'])->middleware('auth');
+Route::put('/student/{id}', [StudentAdmissionController::class, 'update'])->middleware('auth');
+Route::delete('/student/{id}', [StudentAdmissionController::class, 'destroy'])->middleware('auth');
 
 
 Route::get('/staff', [StaffController::class, 'index']);

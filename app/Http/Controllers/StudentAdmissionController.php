@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class StudentAdmissionController extends Controller
@@ -23,12 +25,12 @@ class StudentAdmissionController extends Controller
             'password' => 'required|confirmed|min:6'
         ]);
 
-        //Create User 
-        $student = Student::create($validatedData);
-
+        
         //Hash Password
         $validatedData['password'] = bcrypt($validatedData['password']);
-
+        
+        //Create User 
+        $student = Student::create($validatedData);
 
         //Login
         auth()->login($student);
@@ -37,7 +39,7 @@ class StudentAdmissionController extends Controller
     }
 
 
-    //Log out user
+    //Logging out student
     public function logout(Request $request)
     {
         auth()->logout();
@@ -54,20 +56,26 @@ class StudentAdmissionController extends Controller
         return view('studentAdmission.login');
     }
 
-    //authenticate user
+    //authenticate student
+
     public function authenticate(Request $request)
     {
-        $formFields = $request->validate([
-            'email' => ['required', 'email'],
+        $request->validate([
+            'email' => 'required|email',
             'password' => 'required'
         ]);
 
-        if (auth()->attempt($formFields)) {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
-            return redirect('/')->with('message', 'You are now logged in');
+            
+            // Authentication passed...
+            return redirect('/')->with('message', 'Welcome Back');
         }
-
-        return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
+        
+        return back()->withInput()->withErrors(['email' => 'Email or password is incorrect']);
     }
+
+    
 }
