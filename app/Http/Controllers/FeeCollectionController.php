@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class FeeCollectionController extends Controller
