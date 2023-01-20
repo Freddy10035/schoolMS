@@ -18,7 +18,12 @@ class StaffController extends Controller
     {
         return view('staff.create');
     }
-
+    
+    //shows staff login page
+    public function login()
+    {
+        return view('staff.login');
+    }
 
 
     public function store(Request $request)
@@ -48,9 +53,4 @@ class StaffController extends Controller
     }
 
 
-    //shows staff login page
-    public function login()
-    {
-        return view('staff.login');
-    }
 }

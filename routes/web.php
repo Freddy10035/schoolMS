@@ -1,8 +1,12 @@
 <?php
 
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\StudentAdmissionController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FeeController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\StaffController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\FeeCollectionController;
+use App\Http\Controllers\StudentAdmissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +30,7 @@ Route::get('/', [HomeController::class, 'index']);
 Route::post('/student', [StudentAdmissionController::class, 'store']);
 Route::get('/student/register', [StudentAdmissionController::class, 'create'])->middleware('guest');
 Route::post('/student/authenticate', [StudentAdmissionController::class,'authenticate']);
-Route::get('/student/login', [StudentAdmissionController::class,'login'])->name('login')->middleware('guest');
+Route::get('/student/login', [StudentAdmissionController::class,'login'])->name('student.login')->middleware('guest');
 Route::get('/logout', [StudentAdmissionController::class,'logout'])->middleware('guest');
 Route::get('/student/{id}/edit', [StudentAdmissionController::class, 'edit'])->middleware('auth');
 Route::put('/student/{id}', [StudentAdmissionController::class, 'update'])->middleware('auth');
@@ -35,7 +39,7 @@ Route::delete('/student/{id}', [StudentAdmissionController::class, 'destroy'])->
 
 Route::get('/staff', [StaffController::class, 'index']);
 Route::get('/staff/create', [StaffController::class, 'create']);
-Route::get('/staff/login', [StaffController::class, 'login']);
+Route::get('/staff/login', [StaffController::class,'login'])->name('staff.login')->middleware('guest');
 Route::get('/staff/authenticate', [StaffController::class, 'authenticate']);
 Route::post('/staff', [StaffController::class, 'store']);
 Route::get('/staff/{id}/edit', [StaffController::class, 'edit']);
